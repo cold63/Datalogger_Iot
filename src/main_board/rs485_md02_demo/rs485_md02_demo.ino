@@ -1,3 +1,18 @@
+/*
+執行這個範例前除了安裝 u8g2程式庫之外也要安裝以下 Modbus 程式庫
+
+	" ModbusMaster"  by Doc Walker
+	
+	在 Librarary Manager 中安裝即可.
+
+
+Before running this example, in addition to installing the u8g2 library, 
+you also need to install the following Modbus library:
+
+- "ModbusMaster" by Doc Walker
+
+You can install it via the Library Manager.
+*/
 
 #include <ModbusMaster.h>
 #include <U8g2lib.h>
