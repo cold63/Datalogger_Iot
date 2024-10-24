@@ -1,3 +1,26 @@
+/*
+執行這個範例前先安裝以下連結的程式庫
+	Modbus-Master-Slave-for-Arduino
+	https://github.com/smarmengol/Modbus-Master-Slave-for-Arduino/tree/master
+	
+	範例說明:
+	一次連接 2 個 RS-485 溫溼度感測器 (型號:RS485-MD-02)，Modbus Address 分別定義為 0x01 & 0x02
+	
+	若需要連結 N 個 RS-485 裝置，按照這範例指示。
+	
+	
+
+Before running this example, please install the following library from the link below:
+- Modbus-Master-Slave-for-Arduino
+- https://github.com/smarmengol/Modbus-Master-Slave-for-Arduino/tree/master
+
+Example Description:
+- This example connects two RS-485 temperature and humidity sensors (model: RS485-MD-02), with Modbus Addresses defined as 0x01 & 0x02.
+
+- If you need to connect N RS-485 devices, follow the instructions provided in this example.
+	
+
+*/
 
 #include <ModbusRtu.h>
 #include <SoftwareSerial.h>
