@@ -112,7 +112,7 @@ void loop() {
               Serial.print(" : ");
               Serial.println(au16data[x]);
           }
-                 
+          
 
           Serial.print("1->溫度: ");
           Serial.println((float)temperature1/10);
