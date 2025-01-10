@@ -121,7 +121,7 @@ void loop() {
             if (mySensor.readMeasurement()) // readMeasurement will return true when fresh data is available
             {
                 Serial.println();
-                Serial.println("SCD40 sensor  ");
+                Serial.println("SCD41 sensor  ");
                 Serial.print(F("    CO2(ppm):"));
                 Serial.print(mySensor.getCO2());
 
