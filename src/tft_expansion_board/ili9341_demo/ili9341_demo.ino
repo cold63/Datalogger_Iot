@@ -1,7 +1,6 @@
 #include <SPI.h>
 #include "AmebaILI9341.h"
 
-// --- 請根據你的實際接線修改以下腳位 ---
 #define TFT_RESET       14
 #define TFT_DC          5
 #define TFT_CS          SPI_SS
@@ -11,7 +10,7 @@
 // 初始化 TFT 物件
 AmebaILI9341 tft = AmebaILI9341(TFT_CS, TFT_DC, TFT_RESET, SPI_BUS);
 
-// --- UI 佈局參數 (已為橫向模式調整) ---
+// --- UI 佈局參數 
 #define BOX_WIDTH     93  // 每個資訊框的寬度
 #define BOX_HEIGHT    85  // 每個資訊框的高度
 #define H_SPACING     10  // 框的水平間距
@@ -43,7 +42,7 @@ void setup() {
 }
 
 // ----------------------------------------------------
-//  loop() - 循環更新動態數據 (此函式無變更)
+//  loop() - 循環更新動態數據 
 // ----------------------------------------------------
 void loop() {
     // 更新螢幕上的所有感測器數值
@@ -78,7 +77,7 @@ void drawUiLayout() {
 }
 
 // ----------------------------------------------------
-//  drawInfoBox() - 繪製單一資訊框的框架與標籤 (此函式無變更)
+//  drawInfoBox() - 繪製單一資訊框的框架與標籤 
 // ----------------------------------------------------
 void drawInfoBox(int row, int col, const char* label) {
     // 計算框的左上角座標
@@ -100,7 +99,7 @@ void drawInfoBox(int row, int col, const char* label) {
 // ----------------------------------------------------
 void updateAllData() {
     // ****** 在這裡填入你讀取感測器的真實程式碼 ******
-    // 以下使用隨機數模擬感測器數據 (數據本身無變更)
+    // 以下使用隨機數模擬感測器數據 
     float pm1_0 = random(5, 20) / 10.0 + 5.0;
     float pm2_5 = random(10, 150) / 10.0 + 10.0;
     float pm10  = random(20, 200) / 10.0 + 20.0;
@@ -112,7 +111,6 @@ void updateAllData() {
 
     char buffer[20];
 
-    // --- ******** 變更：更新 3x2 資訊框的數值 ******** ---
     // PM1.0
     dtostrf(pm1_0, 4, 1, buffer);
     updateValueInBox(0, 0, buffer, "ug/m3");
