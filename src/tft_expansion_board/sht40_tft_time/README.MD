@@ -52,8 +52,8 @@ AmebaILI9341 tft = AmebaILI9341(TFT_CS_PIN, TFT_DC_PIN, TFT_RESET_PIN);
 SensirionI2cSht4x sensor;
 
 // WiFi 與 NTP 相關設定
-char ssid[] = "StudioHQ"; // 請替換成您的 WiFi 名稱
-char pass[] = "0979856319"; // 請替換成您的 WiFi 密碼
+char ssid[] = "your_ssid"; // 請替換成您的 WiFi 名稱
+char pass[] = "your_password"; // 請替換成您的 WiFi 密碼
 char timeServer[] = "time.stdtime.gov.tw"; // 台灣標準時間伺服器
 ```
 
