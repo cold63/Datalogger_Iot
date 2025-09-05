@@ -38,8 +38,8 @@ const int intervalSwitch = 1000; // 1 秒
 float aTemperature = 0.0;
 float aHumidity = 0.0;
 
-char ssid[] = "StudioHQ"; // your network SSID (name)
-char pass[] = "0979856319"; // your network password
+char ssid[] = "your_ssid"; // your network SSID (name)
+char pass[] = "your_password"; // your network password
 int status = WL_IDLE_STATUS;
 unsigned long ConnectTimeOut;
 WiFiClient client;
