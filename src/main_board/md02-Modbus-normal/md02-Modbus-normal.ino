@@ -81,7 +81,7 @@ WiFiClient client;             // WiFi 客戶端物件
  * 資料上傳計時器變數
  * ============================================================================ */
 unsigned long CurrentTime, preTime;                // 資料上傳計時器
-const int intervalSwitch = 1000 * 60 * 1;          // 資料上傳間隔: 1 分鐘 (60000 ms)
+const int intervalSwitch = 1000 * 30 * 1;          // 資料上傳間隔: 0.5 分鐘 (30000 ms)
 
 /* ============================================================================
  * WiFi 重連計時器變數
@@ -211,7 +211,7 @@ void loop() {
      * 起始位址: 1 (溫度暫存器)
      * 讀取數量: 1 個暫存器
      */
-    telegram[0].u8id = 8;             // 從站位址
+    telegram[0].u8id = 1;             // 從站位址
     telegram[0].u8fct = 4;            // 功能碼: 讀取輸入暫存器
     telegram[0].u16RegAdd = 1;        // 暫存器起始位址 (溫度)
     telegram[0].u16CoilsNo = 1;       // 讀取暫存器數量
@@ -222,7 +222,7 @@ void loop() {
      * 起始位址: 2 (濕度暫存器)
      * 讀取數量: 1 個暫存器
      */
-    telegram[1].u8id = 8;             // 從站位址
+    telegram[1].u8id = 1;             // 從站位址
     telegram[1].u8fct = 4;            // 功能碼: 讀取輸入暫存器
     telegram[1].u16RegAdd = 2;        // 暫存器起始位址 (濕度)
     telegram[1].u16CoilsNo = 1;       // 讀取暫存器數量
@@ -310,7 +310,7 @@ void loop() {
          * field1: 溫度
          * field2: 濕度
          */
-        client.println("GET /update?api_key="+ api_key +"&field1=" + String((float)temperature/100.0) + "&field2=" + String((float)humdidity/100.0) + " HTTP/1.1" );
+        client.println("GET /update?api_key="+ api_key +"&field1=" + String((float)temperature/10.0) + "&field2=" + String((float)humdidity/10.0) + " HTTP/1.1" );
         client.println("HOST: api.thingspeak.com");
         client.println("Connection: close");
         client.println();

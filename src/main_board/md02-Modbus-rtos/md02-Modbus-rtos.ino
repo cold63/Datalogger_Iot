@@ -160,7 +160,7 @@ void ModbusTask(void *pvParameters) {
       // 當通訊完成 (狀態為 IDLE) 時處理數據
       if (master.getState() == COM_IDLE) {
         u8state = 0;                    // 重置狀態機
-        u32wait = millis() + 30000;     // 設定下次查詢等待時間 (30 秒後)
+        u32wait = millis() + 20000;     // 設定下次查詢等待時間 (20 秒後)
         
         /* 將讀取到的原始數據存入變數 */
         temperature = au16data[0];      // 溫度原始值
@@ -219,8 +219,8 @@ void SendThingTask(void *pvParameters) {
     SensorData_t receivedData;
     
     for (;;) {
-        // 等待從 Queue 接收數據 (等待 60 秒)
-        if (xQueueReceive(Queue, &receivedData, (60 * 1000) / portTICK_PERIOD_MS) == pdPASS) {
+        // 等待從 Queue 接收數據 (等待 30 秒)
+        if (xQueueReceive(Queue, &receivedData, (30 * 1000) / portTICK_PERIOD_MS) == pdPASS) {
             
             // 檢查 WiFi 是否已連線
             if (!wifiConnected) {
@@ -261,12 +261,12 @@ void SendThingTask(void *pvParameters) {
                 Serial.println("Failed to connect to ThingSpeak server");
             }
         } else {
-            // Queue 接收超時 (60秒沒有新數據)
-            Serial.println("No sensor data received in 60 seconds");
+            // Queue 接收超時 (30秒沒有新數據)
+            Serial.println("No sensor data received in 30 seconds");
         }
         
-        // 確保上傳間隔至少 60 秒 (ThingSpeak 免費版限制)
-        vTaskDelay((60 * 1000) / portTICK_PERIOD_MS);
+        
+        vTaskDelay((1000) / portTICK_PERIOD_MS);
     }
 }
 
@@ -289,7 +289,7 @@ void setup() {
    * 起始位址: 1 (溫度暫存器)
    * 讀取數量: 1 個暫存器
    */
-  telegram[0].u8id = 1;           // 從站位址
+  telegram[0].u8id = 8;           // 從站位址
   telegram[0].u8fct = 4;          // 功能碼: 讀取輸入暫存器
   telegram[0].u16RegAdd = 1;      // 暫存器起始位址 (溫度)
   telegram[0].u16CoilsNo = 1;     // 讀取暫存器數量
@@ -300,7 +300,7 @@ void setup() {
    * 起始位址: 2 (濕度暫存器)
    * 讀取數量: 1 個暫存器
    */
-  telegram[1].u8id = 1;               // 從站位址
+  telegram[1].u8id = 8;               // 從站位址
   telegram[1].u8fct = 4;              // 功能碼: 讀取輸入暫存器
   telegram[1].u16RegAdd = 2;          // 暫存器起始位址 (濕度)
   telegram[1].u16CoilsNo = 1;         // 讀取暫存器數量
