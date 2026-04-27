@@ -11,7 +11,7 @@ void setup() {
 
 
 
-  if (!LoRa.begin(433E6)) {
+  if (!LoRa.begin(915E6)) {
     Serial.println("Starting LoRa failed!");
     while (1);
   }
