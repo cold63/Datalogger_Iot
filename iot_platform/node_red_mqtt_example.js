@@ -112,6 +112,16 @@
         ]
     },
     {
+        "id": "0d5c540e597a4d6c",
+        "type": "comment",
+        "z": "7b09e8a82c3090e7",
+        "name": "輸出 json 格式",
+        "info": "{\"temperature\":23.5,\"humidity\":56.4}",
+        "x": 410,
+        "y": 500,
+        "wires": []
+    },
+    {
         "id": "1e7e45d079a1ce43",
         "type": "mqtt-broker",
         "name": "mqtt_broke",
