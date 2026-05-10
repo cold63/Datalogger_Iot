@@ -1,0 +1,7 @@
+SELECT 
+  mean("temperature") AS "即時溫度", 
+  mean("humidity") AS "即時濕度" 
+FROM "mqtt_consumer" 
+WHERE ("mqtt_topic" = '您的主題名稱') 
+  AND $timeFilter 
+GROUP BY time($__interval) fill(null)
