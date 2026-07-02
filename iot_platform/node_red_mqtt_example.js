@@ -1,71 +1,16 @@
 [
     {
-        "id": "7b09e8a82c3090e7",
+        "id": "40550e52ca5b88b6",
         "type": "tab",
-        "label": "流程2",
+        "label": "流程3",
         "disabled": false,
         "info": "",
         "env": []
     },
     {
-        "id": "54fc4ea0dd138a68",
-        "type": "debug",
-        "z": "7b09e8a82c3090e7",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 900,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "7ac61497b346f0d7",
-        "type": "mqtt in",
-        "z": "7b09e8a82c3090e7",
-        "name": "",
-        "topic": "mqtt_hihr4n73/#",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "1e7e45d079a1ce43",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 520,
-        "y": 300,
-        "wires": [
-            [
-                "54fc4ea0dd138a68"
-            ]
-        ]
-    },
-    {
-        "id": "4b81bcf9725ca472",
-        "type": "mqtt out",
-        "z": "7b09e8a82c3090e7",
-        "name": "",
-        "topic": "",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "1e7e45d079a1ce43",
-        "x": 670,
-        "y": 440,
-        "wires": []
-    },
-    {
-        "id": "14d58b3a275503d7",
+        "id": "33cdb2c9fdaca9a8",
         "type": "inject",
-        "z": "7b09e8a82c3090e7",
+        "z": "40550e52ca5b88b6",
         "name": "",
         "props": [
             {
@@ -83,48 +28,66 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 220,
-        "y": 440,
+        "x": 340,
+        "y": 280,
         "wires": [
             [
-                "9bee3a68dcf4bb27"
+                "0db1de94156c8dd0"
             ]
         ]
     },
     {
-        "id": "9bee3a68dcf4bb27",
+        "id": "0db1de94156c8dd0",
         "type": "function",
-        "z": "7b09e8a82c3090e7",
-        "name": "function 1",
-        "func": "// 1. 參數化定義 (未來要換人測試，只要改這三行)\nconst USER_ID = \"mqtt_hihr4n73\";   // 你的租戶 ID\nconst DEVICE_ID = \"device_v1\";     // 設備編號\nconst SENSOR_TYPE = \"temperature\"; // 感測器類型\n\n// 2. 自動組合 Topic (嚴格遵守 +/+/+ 規則)\n// 使用 ES6 樣板字面值，避免手動拼湊字串出錯\nmsg.topic = `${USER_ID}/${DEVICE_ID}/${SENSOR_TYPE}`;\n\n// 3. 產生模擬數據\nlet temp = (Math.random() * (35 - 20) + 20).toFixed(1);\n// (可選) 順便多加一個濕度，讓圖表更豐富\nlet humi = (Math.random() * (90 - 50) + 50).toFixed(1); \n\n// 4. 設定標準化 Payload\nmsg.payload = {\n    \"temperature\": parseFloat(temp),\n    \"humidity\": parseFloat(humi)\n};\n\nreturn msg;",
+        "z": "40550e52ca5b88b6",
+        "name": "function 2",
+        "func": "// 1. 參數化定義 (未來要換人測試，只要改這三行)\nconst USER_ID = \"your_account\";   // 你的租戶 ID\nconst DEVICE_ID = \"device_v1\"; // 設備編號\nconst SENSOR_TYPE = \"env\"; // 感測器類型\n\n// 2. 自動組合 Topic (嚴格遵守 +/+/+ 規則)\n// 使用 ES6 樣板字面值，避免手動拼湊字串出錯\nmsg.topic = `${USER_ID}/${DEVICE_ID}/${SENSOR_TYPE}`;\n\n// 3. 產生模擬數據\nlet temp = (Math.random() * (35 - 20) + 20).toFixed(1);\n// (可選) 順便多加一個濕度，讓圖表更豐富\nlet humi = (Math.random() * (90 - 50) + 50).toFixed(1); \n\n// 4. 設定標準化 Payload\nmsg.payload = {\n    \"temperature\": parseFloat(temp),\n    \"humidity\": parseFloat(humi)\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 417,
-        "y": 440,
+        "x": 537,
+        "y": 280,
         "wires": [
             [
-                "4b81bcf9725ca472"
+                "5254906605963f44"
             ]
         ]
     },
     {
-        "id": "0d5c540e597a4d6c",
+        "id": "87542857c87f4b3c",
         "type": "comment",
-        "z": "7b09e8a82c3090e7",
+        "z": "40550e52ca5b88b6",
         "name": "輸出 json 格式",
         "info": "{\"temperature\":23.5,\"humidity\":56.4}",
-        "x": 410,
-        "y": 500,
+        "x": 530,
+        "y": 340,
         "wires": []
     },
     {
-        "id": "1e7e45d079a1ce43",
+        "id": "5254906605963f44",
+        "type": "mqtt out",
+        "z": "40550e52ca5b88b6",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e67d8bc364090af8",
+        "x": 770,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "e67d8bc364090af8",
         "type": "mqtt-broker",
-        "name": "mqtt_broke",
+        "name": "makdev.net mqtt",
         "broker": "broker.makdev.net",
         "port": 1883,
         "clientid": "",
