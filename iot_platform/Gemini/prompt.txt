@@ -1,0 +1,1 @@
+mqtt 發布路徑是 your_mqtt_account/room1/env ， 內容是 {"temperature":28.20,"humidity":78.80} 。感測器是空氣型溫溼度感測器，放置在房間裡。請規劃合適的 panel
